@@ -7,320 +7,408 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
 }
 body{
-color:white;
-background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1f4037);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
+  color:white;
+  background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1f4037);
+  background-size:400% 400%;
+  animation:bg 12s ease infinite;
 }
 @keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-/* Header */
+/* Header with full Gaussian blur */
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 8%;
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(20px);
-border-bottom:1px solid rgba(255,255,255,0.1);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 8%;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background: rgba(255,255,255,0.0); /* transparent */
+  backdrop-filter: blur(25px); /* full Gaussian blur */
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 15px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
+
+/* Logo */
 .logo img{
-width:150px;
-max-width:120px;
+  width:150px;
+  max-width:120px;
 }
+
+/* Nav menu */
 nav{
-display:flex;
-gap:30px;
-flex-wrap: wrap;
+  display:flex;
+  gap:30px;
+  align-items:center;
+  position:relative;
 }
+/* Liquid menu links */
 nav a{
-color:white;
-text-decoration:none;
-font-weight:500;
-transition:.3s;
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  padding:8px 12px;
+  position:relative;
+  transition: all 0.3s ease;
+  z-index:1;
+}
+nav a::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scaleX(0);
+  width:120%;
+  height:100%;
+  background:rgba(0,245,160,0.15);
+  border-radius:50px;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index:-1;
+}
+nav a:hover::before{
+  transform:translate(-50%,-50%) scaleX(1);
 }
 nav a:hover{
-color:#00f5a0;
+  color:#00f5a0;
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  width:0%;
+  height:3px;
+  bottom:0;
+  left:0;
+  background:linear-gradient(90deg,#00f5a0,#00d9f5);
+  transition:0.4s;
+  border-radius:2px;
+}
+nav a:hover::after{
+  width:100%;
+}
+
+/* Hamburger menu */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+  gap:5px;
+  z-index:1001;
+}
+.hamburger span{
+  height:3px;
+  width:25px;
+  background:white;
+  border-radius:3px;
+  transition: all 0.3s ease;
 }
 
 /* Hero */
 .hero{
-text-align:center;
-padding:100px 8% 60px;
+  text-align:center;
+  padding:100px 8% 60px;
 }
 .hero h1{
-font-size:52px;
-font-weight:700;
-background:linear-gradient(90deg,#00f5a0,#00d9f5);
--webkit-background-clip:text;
-color:transparent;
+  font-size:52px;
+  font-weight:700;
+  background:linear-gradient(90deg,#00f5a0,#00d9f5);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 .hero p{
-margin:20px 0;
-font-size:18px;
-opacity:.9;
+  margin:20px 0;
+  font-size:18px;
+  opacity:.9;
 }
 .btn{
-padding:12px 28px;
-border:none;
-border-radius:40px;
-font-weight:600;
-cursor:pointer;
-background:linear-gradient(45deg,#00f5a0,#00d9f5);
-color:black;
-transition:.3s;
-text-decoration:none;
-display:inline-block;
-text-align:center;
-position: relative;
-z-index: 1;
+  padding:12px 28px;
+  border:none;
+  border-radius:40px;
+  font-weight:600;
+  cursor:pointer;
+  background:linear-gradient(45deg,#00f5a0,#00d9f5);
+  color:black;
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+  text-align:center;
+  position: relative;
+  z-index: 1;
 }
 .btn:hover{
-transform:scale(1.08);
-box-shadow:0 10px 30px rgba(0,255,200,0.5);
+  transform:scale(1.08);
+  box-shadow:0 10px 30px rgba(0,255,200,0.5);
 }
 
 /* Sections */
 .section{
-padding:80px 8%;
+  padding:80px 8%;
 }
 .section h2{
-text-align:center;
-font-size:36px;
-margin-bottom:50px;
+  text-align:center;
+  font-size:36px;
+  margin-bottom:50px;
 }
 
 /* Product Grid */
 .products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
 }
 
 /* Cards */
 .card{
-background:rgba(255,255,255,0.07);
-border-radius:20px;
-padding:20px;
-backdrop-filter:blur(20px);
-transition:.4s;
-border:1px solid rgba(255,255,255,0.1);
-position:relative;
-overflow:hidden;
+  background:rgba(255,255,255,0.07);
+  border-radius:20px;
+  padding:20px;
+  backdrop-filter:blur(20px);
+  transition:.4s;
+  border:1px solid rgba(255,255,255,0.1);
+  position:relative;
+  overflow:hidden;
 }
 .card::before{
-content:"";
-position:absolute;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,0.1),transparent);
-transform:rotate(25deg);
-pointer-events: none;
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.1),transparent);
+  transform:rotate(25deg);
+  pointer-events: none;
 }
 .card:hover{
-transform:translateY(-8px) scale(1.02);
-box-shadow:0 15px 35px rgba(0,0,0,0.5);
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 15px 35px rgba(0,0,0,0.5);
 }
 .card img{
-width:100%;
-height:200px;
-object-fit:cover;
-border-radius:15px;
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:15px;
 }
 .card h3{
-margin-top:15px;
+  margin-top:15px;
 }
 .price{
-color:#00f5a0;
-font-weight:600;
-margin:8px 0 15px;
+  color:#00f5a0;
+  font-weight:600;
+  margin:8px 0 15px;
 }
 
 /* Video */
 video{
-width:100%;
-border-radius:15px;
-margin-top:10px;
+  width:100%;
+  border-radius:15px;
+  margin-top:10px;
 }
 
 /* Contact */
 .contact-box{
-background:rgba(255,255,255,0.06);
-padding:40px 20px;
-border-radius:25px;
-text-align:center;
-max-width:650px;
-margin:auto;
-backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.06);
+  padding:40px 20px;
+  border-radius:25px;
+  text-align:center;
+  max-width:650px;
+  margin:auto;
+  backdrop-filter:blur(20px);
 }
 
 /* Floating WhatsApp */
 .whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px 18px;
-border-radius:50px;
-font-size:20px;
-text-decoration:none;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-z-index: 10;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px 18px;
+  border-radius:50px;
+  font-size:20px;
+  text-decoration:none;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+  z-index: 10;
 }
 
 /* Footer */
 footer{
-text-align:center;
-padding:25px 10px;
-margin-top:50px;
-background:rgba(0,0,0,0.4);
-font-size:14px;
+  text-align:center;
+  padding:25px 10px;
+  margin-top:50px;
+  background:rgba(0,0,0,0.3);
+  font-size:14px;
 }
 
-/* Mobile Responsive */
+/* Responsive Desktop */
 @media(max-width:992px){
-.hero h1{
-font-size:40px;
+  .hero h1{
+    font-size:40px;
+  }
+  .section{
+    padding:60px 5%;
+  }
+  .products{
+    gap:20px;
+  }
+  .card img{
+    height:180px;
+  }
 }
-.section{
-padding:60px 5%;
-}
-.products{
-gap:20px;
-}
-.card img{
-height:180px;
-}
-}
+
+/* Mobile Hamburger Menu */
 @media(max-width:768px){
-.hero h1{
-font-size:32px;
-}
-nav{
-justify-content:center;
-gap:15px;
-}
-.products{
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-.card img{
-height:160px;
-}
-.section{
-padding:50px 4%;
-}
-.btn{
-padding:10px 22px;
-font-size:14px;
-}
+  .hero h1{
+    font-size:32px;
+  }
+  nav{
+    position:fixed;
+    top:0;
+    right:-100%;
+    height:100vh;
+    width:65%;
+    background:rgba(255,255,255,0.05); /* transparent */
+    backdrop-filter:blur(25px); /* full Gaussian blur */
+    -webkit-backdrop-filter:blur(25px);
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    padding:0;
+    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index:999;
+    border-left:2px solid #00f5a0;
+  }
+  nav a{
+    font-size:22px;
+    color:white;
+  }
+  nav.active{
+    right:0;
+  }
+  .hamburger{
+    display:flex;
+  }
+  .hamburger.active span:nth-child(1){
+    transform: rotate(45deg) translate(5px,5px);
+  }
+  .hamburger.active span:nth-child(2){
+    opacity:0;
+  }
+  .hamburger.active span:nth-child(3){
+    transform: rotate(-45deg) translate(5px,-5px);
+  }
+  .products{
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+  }
+  .card img{
+    height:160px;
+  }
+  .section{
+    padding:50px 4%;
+  }
+  .btn{
+    padding:10px 22px;
+    font-size:14px;
+  }
+  nav a:hover::after{
+    width:0%;
+  }
 }
 </style>
 </head>
 <body>
-
 <header>
-<div class="logo">
-<img src="ShopLogo.png" alt="SS Electronics Logo">
-</div>
-<nav>
-<a href="#">Home</a>
-<a href="#products">Products</a>
-<a href="#videos">Demo</a>
-<a href="#contact">Contact</a>
-</nav>
+  <div class="logo">
+    <img src="ShopLogo.png" alt="SS Electronics Logo">
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav id="navMenu">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#videos">Demo</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
 <section class="hero">
-<h1>Wholesale Electronics & CCTV Store</h1>
-<p>Mobiles • Laptops • CCTV Cameras • Gadgets • Appliances</p>
-
-<!-- Shop Now Button -->
-<a id="shuffleButton" class="btn" href="#" target="_self">Shop Now</a>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const links = ["Mobiles.html","Laptops.html","Electronics.html","CCTV.html"];
-    const button = document.getElementById("shuffleButton");
-    button.addEventListener("click", function(e) {
-        e.preventDefault();
-        const randomIndex = Math.floor(Math.random() * links.length);
-        window.location.href = links[randomIndex];
+  <h1>Wholesale Electronics & CCTV Store</h1>
+  <p>Mobiles • Laptops • CCTV Cameras • Gadgets • Appliances</p>
+  <a id="shuffleButton" class="btn" href="#" target="_self">Shop Now</a>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const links = ["Mobiles.html","Laptops.html","Electronics.html","CCTV.html"];
+        const button = document.getElementById("shuffleButton");
+        button.addEventListener("click", function(e) {
+            e.preventDefault();
+            const randomIndex = Math.floor(Math.random() * links.length);
+            window.location.href = links[randomIndex];
+        });
     });
-});
-</script>
+  </script>
 </section>
 
 <section class="section" id="products">
 <h2>Featured Products</h2>
 <div class="products">
-
-<div class="card">
-<img src="Mob3.jpg" alt="Mobiles">
-<h3>Mobiles</h3>
-<div class="price">₹1500 - ₹80000</div>
-<a href="Mobiles.html" class="btn" target="_self">View All</a>
-</div>
-
-<div class="card">
-<img src="Laptops.jpg" alt="Laptops">
-<h3>Laptops</h3>
-<div class="price">₹5000 - ₹90000</div>
-<a href="Laptops.html" class="btn" target="_self">View All</a>
-</div>
-
-<div class="card">
-<img src="CCTV.jpg" alt="CCTV Cameras">
-<h3>CCTV Cameras</h3>
-<div class="price">₹500 - ₹10000</div>
-<a href="CCTV.html" class="btn" target="_self">View All</a>
-</div>
-
-<div class="card">
-<img src="Electronics.png" alt="Electronics">
-<h3>Electronic Appliances</h3>
-<div class="price">₹10 - ₹100000</div>
-<a href="Electronics.html" class="btn" target="_self">View All</a>
-</div>
-
+  <div class="card">
+    <img src="Mob3.jpg" alt="Mobiles">
+    <h3>Mobiles</h3>
+    <div class="price">₹1500 - ₹80000</div>
+    <a href="Mobiles.html" class="btn" target="_self">View All</a>
+  </div>
+  <div class="card">
+    <img src="Laptops.jpg" alt="Laptops">
+    <h3>Laptops</h3>
+    <div class="price">₹5000 - ₹90000</div>
+    <a href="Laptops.html" class="btn" target="_self">View All</a>
+  </div>
+  <div class="card">
+    <img src="CCTV.jpg" alt="CCTV Cameras">
+    <h3>CCTV Cameras</h3>
+    <div class="price">₹500 - ₹10000</div>
+    <a href="CCTV.html" class="btn" target="_self">View All</a>
+  </div>
+  <div class="card">
+    <img src="Electronics.png" alt="Electronics">
+    <h3>Electronic Appliances</h3>
+    <div class="price">₹10 - ₹100000</div>
+    <a href="Electronics.html" class="btn" target="_self">View All</a>
+  </div>
 </div>
 </section>
 
 <section class="section" id="videos">
 <h2>New Products This Week</h2>
 <div class="products">
-
-<div class="card">
-<h3>CCTV Installation Demo</h3>
-<video controls>
-<source src="InstallationDemo.mp4" type="video/mp4">
-</video>
-</div>
-
-<div class="card">
-<h3>Laptop Overview</h3>
-<video controls>
-<source src="MacOffer.mp4" type="video/mp4">
-</video>
-</div>
-
+  <div class="card">
+    <h3>CCTV Installation Demo</h3>
+    <video controls>
+      <source src="InstallationDemo.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="card">
+    <h3>Laptop Overview</h3>
+    <video controls>
+      <source src="MacOffer.mp4" type="video/mp4">
+    </video>
+  </div>
 </div>
 </section>
 
@@ -334,12 +422,25 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 </section>
 
-<!-- Floating WhatsApp Button -->
 <a class="whatsapp" href="https://wa.me/918432829687">💬</a>
 
 <footer>
 © 2026 SS Electronics And CCTV | All Rights Reserved
 </footer>
 
+<script>
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+document.querySelectorAll('#navMenu a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  });
+});
+</script>
 </body>
 </html>
