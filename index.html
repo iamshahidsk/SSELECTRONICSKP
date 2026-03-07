@@ -263,23 +263,21 @@ padding:70px 6%;
 
 <p>Mobiles • Laptops • CCTV Cameras • Gadgets • Appliances</p>
 
-<button class="btn"><a id="shuffleButton" href="#" target="_Self">
-  Shop Now 
-</a><script>
- // Array of links
-  const links = [
-    "Mobiles.html",
-    "Laptops.html",
-    "Electronics.html",
-    "CCTV.html"
-  ];
+<a id="shuffleButton" class="btn" href="#" target="_self">Shop Now</a>
 
-  // Select a random link
-  const randomIndex = Math.floor(Math.random() * links.length);
-  const randomLink = links[randomIndex];
-
-  // Set the button's href
-  document.getElementById("shuffleButton").href = randomLink;
+<script>
+  // Wait until the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", function() {
+      const links = [
+          "Mobiles.html",
+          "Laptops.html",
+          "Electronics.html",
+          "CCTV.html"
+      ];
+      const randomIndex = Math.floor(Math.random() * links.length);
+      const randomLink = links[randomIndex];
+      document.getElementById("shuffleButton").href = randomLink;
+  });
 </script>
 </button>
 
