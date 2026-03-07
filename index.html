@@ -1,334 +1,385 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SS Electronics And CCTV | Wholesale Electronics Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<title>SS Electronics And CCTV</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-body{
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color:#fff;
-}
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 8%;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border-bottom:1px solid rgba(255,255,255,0.1);
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-    
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
-/* Navigation Desktop */
+/* Background Animation */
+
+body{
+color:white;
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1f4037);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Header */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+position:sticky;
+top:0;
+z-index:1000;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo img{
+width:150px;
+}
+
+/* Navigation */
+
 nav{
-    display:flex;
-    gap:25px;
+display:flex;
+gap:30px;
 }
 
 nav a{
-    text-decoration:none;
-    color:#fff;
-    font-weight:500;
-    position:relative;
-    transition:.3s;
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
 }
 
-/* Premium Hover Underline */
-nav a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-5px;
-    width:0;
-    height:2px;
-    background:linear-gradient(45deg,#00f5a0,#00d9f5);
-    transition:.3s;
+nav a:hover{
+color:#00f5a0;
 }
 
-nav a:hover::after{
-    width:100%;
-}
+/* Hero */
 
-/* Hide checkbox */
-#menu-toggle{
-    display:none;
-}
-
-/* Hamburger Icon */
-.menu-icon{
-    display:none;
-    flex-direction:column;
-    cursor:pointer;
-    gap:6px;
-}
-
-.menu-icon span{
-    width:25px;
-    height:3px;
-    background:#fff;
-    transition:.3s;
-    border-radius:3px;
-}
-
-/* Animate Hamburger to X */
-#menu-toggle:checked + .menu-icon span:nth-child(1){
-    transform:rotate(45deg) translate(5px,5px);
-}
-
-#menu-toggle:checked + .menu-icon span:nth-child(2){
-    opacity:0;
-}
-
-#menu-toggle:checked + .menu-icon span:nth-child(3){
-    transform:rotate(-45deg) translate(6px,-6px);
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-
-    .menu-icon{
-        display:flex;
-    }
-
-    nav{
-        position:absolute;
-        top:100%;
-        right:8%;
-        background:rgba(0,0,0,0.9);
-        backdrop-filter:blur(20px);
-        flex-direction:column;
-        width:240px;
-        padding:25px;
-        border-radius:15px;
-        transform:translateY(-20px);
-        opacity:0;
-        pointer-events:none;
-        transition:.4s ease;
-    }
-
-    nav a{
-        margin:15px 0;
-    }
-
-    /* Show menu */
-    #menu-toggle:checked ~ nav{
-        transform:translateY(10px);
-        opacity:1;
-        pointer-events:auto;
-    }
-}
 .hero{
-    text-align:center;
-    padding:80px 8%;
+text-align:center;
+padding:120px 8%;
 }
+
 .hero h1{
-    font-size:48px;
-    margin-bottom:20px;
+font-size:52px;
+font-weight:700;
+background:linear-gradient(90deg,#00f5a0,#00d9f5);
+-webkit-background-clip:text;
+color:transparent;
 }
+
 .hero p{
-    font-size:18px;
-    opacity:.8;
-    margin-bottom:30px;
+margin:20px 0;
+font-size:18px;
+opacity:.9;
 }
+
+/* Button */
+
 .btn{
-    padding:12px 25px;
-    background:linear-gradient(45deg,#00f5a0,#00d9f5);
-    border:none;
-    border-radius:30px;
-    color:#000;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
+padding:14px 30px;
+border:none;
+border-radius:40px;
+font-weight:600;
+cursor:pointer;
+background:linear-gradient(45deg,#00f5a0,#00d9f5);
+color:black;
+transition:.3s;
 }
+
 .btn:hover{
-    transform:scale(1.05);
+transform:scale(1.08);
+box-shadow:0 10px 30px rgba(0,255,200,0.5);
 }
+
+/* Sections */
+
 .section{
-    padding:60px 8%;
+padding:90px 8%;
 }
+
 .section h2{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:32px;
+text-align:center;
+font-size:36px;
+margin-bottom:60px;
 }
+
+/* Product Grid */
+
 .products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:35px;
 }
+
+/* Cards */
+
 .card{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(20px);
-    border-radius:20px;
-    padding:20px;
-    transition:.3s;
+background:rgba(255,255,255,0.07);
+border-radius:20px;
+padding:20px;
+backdrop-filter:blur(20px);
+transition:.4s;
+border:1px solid rgba(255,255,255,0.1);
+position:relative;
+overflow:hidden;
 }
+
+.card::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.1),transparent);
+transform:rotate(25deg);
+}
+
 .card:hover{
-    transform:translateY(-10px);
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
 }
+
 .card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    border-radius:15px;
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:15px;
 }
+
 .card h3{
-    margin:15px 0 10px;
+margin-top:15px;
 }
+
 .price{
-    color:#00f5a0;
-    font-weight:600;
-    margin-bottom:10px;
+color:#00f5a0;
+font-weight:600;
+margin:8px 0 15px;
 }
+
+/* Video */
+
 video{
-    width:100%;
-    border-radius:15px;
-    margin-top:10px;
+width:100%;
+border-radius:15px;
+margin-top:10px;
 }
+
+/* Contact */
+
+.contact-box{
+background:rgba(255,255,255,0.06);
+padding:50px;
+border-radius:25px;
+text-align:center;
+max-width:650px;
+margin:auto;
+backdrop-filter:blur(20px);
+}
+
+/* Floating WhatsApp */
+
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25D366;
+color:white;
+padding:15px 18px;
+border-radius:50px;
+font-size:20px;
+text-decoration:none;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Footer */
+
 footer{
-    text-align:center;
-    padding:30px;
-    background:rgba(0,0,0,0.3);
-    margin-top:50px;
+text-align:center;
+padding:30px;
+margin-top:70px;
+background:rgba(0,0,0,0.4);
+font-size:14px;
 }
+
+/* Mobile */
+
 @media(max-width:768px){
-    .hero h1{
-        font-size:32px;
-    
-    }
+
+.hero h1{
+font-size:34px;
+}
+
+.section{
+padding:70px 6%;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <div class="logo">
-        <img src="ShopLogo.png" style="width:150px;height:auto;">
-         
-    </div>
 
-    <!-- Hidden Checkbox -->
-    <input type="checkbox" id="menu-toggle">
+<div class="logo">
+<img src="ShopLogo.png">
+</div>
 
-    <!-- Animated Hamburger -->
-    <label for="menu-toggle" class="menu-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
+<nav>
+<a href="#">Home</a>
+<a href="#products">Products</a>
+<a href="#videos">Demo</a>
+<a href="#contact">Contact</a>
+</nav>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#products">Products</a>
-        <a href="#videos">Demo Videos</a>
-        <a href="#contact">Contact</a>
-    </nav>
 </header>
+
 <section class="hero">
-    <h1>Wholesale Electronics & CCTV Store</h1>
-    <p>Electronic Appliances | Gadgets | CCTV Cameras | Mobiles | Laptops</p>
-    <button class="btn">Shop Now</button>
+
+<h1>Wholesale Electronics & CCTV Store</h1>
+
+<p>Mobiles • Laptops • CCTV Cameras • Gadgets • Appliances</p>
+
+<button class="btn"><a id="shuffleButton" href="#" target="_Self">
+  Shop Now 
+</a><script>
+ // Array of links
+  const links = [
+    "Mobiles.html",
+    "Laptops.html",
+    "Electronics.html",
+    "CCTV.html"
+  ];
+
+  // Select a random link
+  const randomIndex = Math.floor(Math.random() * links.length);
+  const randomLink = links[randomIndex];
+
+  // Set the button's href
+  document.getElementById("shuffleButton").href = randomLink;
+</script>
+</button>
+
 </section>
 
 <section class="section" id="products">
-    <h2>Featured Products</h2>
-    <div class="products">
 
-        <div class="card">
-            <img src="Mob3.jpg" alt="Mobile">
-            <h3>Mobiles</h3>
-            <div class="price">₹1500-80000</div>
-           <a href="Mobiles.html" target="_self">
-           <button class="btn">View All</button>
-           </a>
-           
+<h2>Featured Products</h2>
 
-        </div>
+<div class="products">
 
-        <div class="card">
-            <img src="Laptops.jpg" alt="Laptop">
-            <h3>Laptops</h3>
-            <div class="price">₹5000-90000</div>
-            <a href="Laptops.html" target="_self">
-           <button class="btn">View All</button>
-           </a>
+<div class="card">
+<img src="Mob3.jpg">
+<h3>Mobiles</h3>
+<div class="price">₹1500 - ₹80000</div>
+<a href="Mobiles.html">
+<button class="btn">View All</button>
+</a>
+</div>
 
-        </div>
+<div class="card">
+<img src="Laptops.jpg">
+<h3>Laptops</h3>
+<div class="price">₹5000 - ₹90000</div>
+<a href="Laptops.html">
+<button class="btn">View All</button>
+</a>
+</div>
 
-        <div class="card">
-            <img src="CCTV.jpg" alt="CCTV Camera">
-            <h3>CCTV Cameras</h3>
-            <div class="price">₹500-10000</div>
-            <a href="CCTV.html" target="_self">
-           <button class="btn">View All</button>
-           </a>
+<div class="card">
+<img src="CCTV.jpg">
+<h3>CCTV Cameras</h3>
+<div class="price">₹500 - ₹10000</div>
+<a href="CCTV.html">
+<button class="btn">View All</button>
+</a>
+</div>
 
-        </div>
+<div class="card">
+<img src="Electronics.png">
+<h3>Electronic Appliances</h3>
+<div class="price">₹10 - ₹100000</div>
+<a href="Electronics.html">
+<button class="btn">View All</button>
+</a>
+</div>
 
-        <div class="card">
-            <img src="Electronics.png" alt="Home Appliance">
-            <h3>Electronic Appliance</h3>
-            <div class="price">₹10-100000</div>
-            <a href="Electronics.html" target="_self">
-           <button class="btn">View All</button>
-           </a>
+</div>
 
-        </div>
-
-    </div>
 </section>
 
 <section class="section" id="videos">
-    <h2>New Products Arrived This Week</h2>
-    <div class="products">
 
-        <div class="card">
-            <h3>CCTV Installation Demo</h3>
-            <video controls>
-                <source src="InstallationDemo.mp4" type="video/mp4">
-            </video>
-        </div>
+<h2>New Products This Week</h2>
 
-        <div class="card">
-            <h3>Latest Laptop Overview</h3>
-            <video controls>
-                <source src="MacOffer.mp4" type="video/mp4">
-            </video>
-        </div>
+<div class="products">
 
-    </div>
+<div class="card">
+<h3>CCTV Installation Demo</h3>
+<video controls>
+<source src="InstallationDemo.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="card">
+<h3>Laptop Overview</h3>
+<video controls>
+<source src="MacOffer.mp4" type="video/mp4">
+</video>
+</div>
+
+</div>
+
 </section>
 
 <section class="section" id="contact">
-    <h2>Contact Us</h2>
-    <div style="text-align:center;">
-        <p>Email: ss.electronics.kp@gmail.com</p>
-        <p>Phone: +91 8432829687</p>
-        <br>
-        <a href="https://wa.me/918432829687?text=Got Your Number From Site, Can You Share More Details About Your Business?" class="btn">Wholesale Inquiry</a>
-    </div>
 
-    </div>
+<h2>Contact Us</h2>
+
+<div class="contact-box">
+
+<p>Email: ss.electronics.kp@gmail.com</p>
+<p>Phone: +91 8432829687</p>
+
+<br>
+
+<a href="https://wa.me/918432829687?text=Got Your Number From Site, Can You Share More Details About Your Business?">
+<button class="btn">Wholesale Inquiry</button>
+</a>
+
+</div>
+
 </section>
 
+<a class="whatsapp" href="https://wa.me/918432829687">💬</a>
+
 <footer>
-    © 2026 SS Electronics And CCTV | All Rights Reserved
+
+© 2026 SS Electronics And CCTV | All Rights Reserved
+
 </footer>
 
 </body>
